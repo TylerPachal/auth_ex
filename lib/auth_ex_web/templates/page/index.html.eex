@@ -1,0 +1,27 @@
+<h2>Login Page</h2>
+<%= if @maybe_user == nil do %>
+
+  <%= form_for @changeset, @action, fn f -> %>
+    <div class="form-group">
+      <%= label f, :username, class: "control-label" %>
+      <%= text_input f, :username, class: "form-control" %>
+      <%= error_tag f, :username %>
+    </div>
+
+    <div class="form-group">
+      <%= label f, :password, class: "control-label" %>
+      <%= password_input f, :password, class: "form-control" %>
+      <%= error_tag f, :password %>
+    </div>
+
+    <div class="form-group">
+      <%= submit "Submit", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+<% else %>
+
+  <h1>Hello <%= @maybe_user.username%>!</h1>
+  <span><%= link "Logout", to: page_path(@conn, :logout) %></span>
+
+<% end %>
