@@ -22,7 +22,7 @@ defmodule AuthExWeb.Router do
     pipe_through [:browser, :auth]
     get "/", PageController, :index
     post "/", PageController, :login
-    get "/logout", PageController, :logout
+    post "/logout", PageController, :logout
   end
 
   # Definitely logged in scope
